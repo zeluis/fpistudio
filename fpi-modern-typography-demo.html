@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modern Responsive Typography Demo</title>
+  <link rel="icon" href="fpi--logo.svg">
+  <style>
+/* ==== Modern Font Face Fallbacks ==== */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inter'), url('https://fonts.gstatic.com/s/inter/v12/UcCO3H6m3f7Q9rA.woff2') format('woff2');
+  font-display: swap;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+@font-face {
+  font-family: 'Segoe UI';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Segoe UI'), url('https://fonts.gstatic.com/s/segoeui/v1/SegoeUI.woff2') format('woff2');
+  font-display: swap;
+  ascent-override: 92%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Me5Q.woff2') format('woff2');
+  font-display: swap;
+  ascent-override: 88%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+/* ==== Responsive, Optimized Typography System ==== */
+:root {
+  /* Unified font stack */
+  --font-sans: Inter, Segoe UI, Roboto, Arial, system-ui, sans-serif;
+  --font-serif: Georgia, ui-serif, serif;
+  --font-mono: ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro, monospace;
+
+  /* Standardized font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Responsive font sizes using clamp */
+  --step--2: clamp(0.75rem, 0.66rem + 0.22vw, 0.85rem);
+  --step--1: clamp(0.875rem, 0.81rem + 0.19vw, 0.98rem);
+  --step-0: clamp(1rem, 0.94rem + 0.26vw, 1.12rem); /* body base */
+  --step-1: clamp(1.25rem, 1.16rem + 0.32vw, 1.4rem); /* h6/h5 */
+  --step-2: clamp(1.5rem, 1.34rem + 0.52vw, 1.7rem); /* h4 */
+  --step-3: clamp(2rem, 1.79rem + 0.7vw, 2.4rem); /* h3 */
+  --step-4: clamp(2.5rem, 2.15rem + 1vw, 3.2rem); /* h2 */
+  --step-5: clamp(3rem, 2.5rem + 1.2vw, 4rem); /* h1 */
+  --step-6: clamp(4rem, 3.5rem + 2vw, 5rem); /* display */
+
+  /* Line heights */
+  --lh-tight: 1.1;
+  --lh-title: 1.15;
+  --lh-normal: 1.5;
+  --lh-loose: 1.7;
+
+  /* Letter spacing */
+  --ls-tight: -0.01em;
+  --ls-normal: 0;
+  --ls-loose: 0.02em;
+
+  /* Color */
+  --text-main: #212121;
+  --text-light: #7a7e83;
+  --text-accent: #ed010c;
+  --bg-body: #fff;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  line-height: var(--lh-normal);
+  color: var(--text-main);
+  background: var(--bg-body);
+  margin: 0;
+  font-variant-ligatures: discretionary-ligatures;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Headings: Responsive, consistent, with clamp and fallback for small screens */
+h1, .h1 {
+  font-size: var(--step-5);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: 0.5em;
+}
+h2, .h2 {
+  font-size: var(--step-4);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: 0.5em;
+}
+h3, .h3 {
+  font-size: var(--step-3);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--lh-title);
+  margin-bottom: 0.5em;
+}
+h4, .h4 {
+  font-size: var(--step-2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--lh-normal);
+  margin-bottom: 0.35em;
+}
+h5, .h5 {
+  font-size: var(--step-1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--lh-normal);
+  margin-bottom: 0.25em;
+}
+h6, .h6 {
+  font-size: var(--step-1);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--lh-normal);
+  margin-bottom: 0.15em;
+}
+/* Display/hero headline */
+.display, .headline {
+  font-size: var(--step-6);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: 0.7em;
+}
+
+@media (max-width: 600px) {
+  h1, .h1 { font-size: var(--step-4); }
+  h2, .h2 { font-size: var(--step-3); }
+  h3, .h3 { font-size: var(--step-2); }
+  .display, .headline { font-size: var(--step-5); }
+}
+
+/* Subheadline, accent, and secondary text styles */
+.subheadline {
+  font-size: var(--step-1);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-accent);
+  letter-spacing: var(--ls-loose);
+  margin-bottom: 1.2em;
+}
+.accent {
+  color: var(--text-accent);
+  font-weight: var(--font-weight-bold);
+}
+.text-light, .note {
+  color: var(--text-light);
+  font-size: var(--step--1);
+  font-style: italic;
+}
+
+/* Paragraph, prose, and utility */
+p, .body-text {
+  font-size: var(--step-0);
+  line-height: var(--lh-loose);
+  margin-bottom: 1.2em;
+}
+.prose {
+  max-width: 60ch;
+}
+ul, ol {
+  font-size: var(--step-0);
+  line-height: var(--lh-loose);
+  margin-bottom: 1em;
+  padding-left: 1.3em;
+}
+li {
+  margin-bottom: 0.3em;
+}
+blockquote {
+  font-size: var(--step-1);
+  line-height: var(--lh-loose);
+  font-style: italic;
+  color: var(--text-accent);
+  border-left: 3px solid var(--text-accent);
+  padding-left: 1em;
+  margin: 1.2em 0;
+  background: #f9f9fc;
+}
+
+/* Code, pre, and mono */
+code, pre {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  background: #f6f6f6;
+  padding: 0.1em 0.3em;
+  border-radius: 0.3em;
+}
+pre {
+  display: block;
+  padding: 1em;
+  margin-bottom: 1.5em;
+  overflow-x: auto;
+}
+
+/* Links */
+a {
+  color: var(--text-accent);
+  text-decoration: underline;
+  transition: color .18s;
+}
+a:hover, a:focus {
+  color: #b1100b;
+  text-decoration: underline wavy;
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+.font-serif { font-family: var(--font-serif); }
+.font-mono { font-family: var(--font-mono); }
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.mt-0 { margin-top: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.lh-tight { line-height: var(--lh-tight); }
+.lh-loose { line-height: var(--lh-loose); }
+
+/* Accessibility & best practices */
+[tabindex]:focus, a:focus, button:focus {
+  outline: 2px solid var(--text-accent);
+  outline-offset: 2px;
+}
+  </style>
+</head>
+<body>
+<main class="container prose">
+  <section>
+    <h1 class="display">Modern Responsive Typography</h1>
+    <p class="subheadline">Unified, scalable, legible &amp; beautiful on any device</p>
+    <p>Built using <span class="accent">CSS clamp</span> for headings and font-face metrics for optimal fallback. This demo shows best practices for web typography.</p>
+  </section>
+  <section>
+    <h2>Heading Level 2</h2>
+    <p class="body-text text-light">Subtle, secondary text for context or notes.</p>
+    <h3>Heading Level 3</h3>
+    <p>Lorem ipsum dolor sit amet, <strong class="accent">highlighted text</strong> consectetur adipiscing elit.</p>
+    <h4>Heading Level 4</h4>
+    <p>Responsive sizing ensures optimal readability.</p>
+    <ul>
+      <li>Bulleted lists are clear and legible.</li>
+      <li>Font sizes and line heights scale with viewport.</li>
+    </ul>
+    <blockquote>
+      “Good typography is invisible. Great typography is memorable.”
+    </blockquote>
+    <pre><code>// Sample code block
+function hello() { console.log('Hello, world!'); }
+    </code></pre>
+    <p>Visit <a href="https://fpids.ch/">fpids.ch</a> for more.</p>
+  </section>
+  <section>
+    <h2 class="headline text-center">Responsive Headline</h2>
+    <p class="text-center">Resize the browser to see fluid scaling in action.</p>
+  </section>
+</main>
+</body>
+</html>
